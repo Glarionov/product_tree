@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    public $fillable = ['name', 'description', 'index', 'parent_id'];
+
     /**
      * Get the products for the Category.
      */

@@ -30,7 +30,11 @@ class DatabaseSeeder extends Seeder
         $fruitCategory = $categoryService->store(['name' => 'fruits', 'parent_id' => $plantsCategory->id]);
 
         $productService = new ProductService();
-        $productService->store(['name' => 'banana', 'category_id' => $fruitCategory->id]);
+        $categoryService->store(['name' => 'apple', 'parent_id' => $fruitCategory->id]);
+        $categoryService->store(['name' => 'banana', 'parent_id' => $fruitCategory->id, 'index' => 1]);
+        $categoryService->store(['name' => 'cherry', 'parent_id' => $fruitCategory->id, 'index' => 2]);
+        $categoryService->store(['name' => 'damson', 'parent_id' => $fruitCategory->id, 'index' => 3]);
+        $categoryService->store(['name' => 'eggplant', 'parent_id' => $fruitCategory->id, 'index' => 4]);
         $productService->store(['name' => 'potato', 'category_id' => $plantsCategory->id]);
         $productService->store(['name' => 'lasagna', 'category_id' => $foodCategory->id]);
         $productService->store(['name' => 'dress', 'category_id' => $clothesCategory->id]);

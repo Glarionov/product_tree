@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Services\CategoryService;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -25,9 +27,10 @@ class CategoryController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        //
+        $service = new CategoryService();
+        return response($service->store($request->all()));
     }
 
     /**
@@ -56,13 +59,14 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdateCategoryRequest $request
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $service = new CategoryService();
+        return response($service->update($request->all(), $category));
     }
 
     /**
